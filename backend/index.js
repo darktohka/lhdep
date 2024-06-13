@@ -87,7 +87,7 @@ app.post('/addproduct',async (req,res) =>{
         id = last_product.id+1;
     }
     else{
-        is=1;
+        id=1;
     }
     const product = new Product({
         id:id,
@@ -104,6 +104,24 @@ app.post('/addproduct',async (req,res) =>{
         success:true,
         name:req.body.name,
     })
+})
+
+//Creating API for deleting products
+
+app.post('/removeproduct', async (req,res)=>{
+    await Product.findOneAndDelete({id:req.body.id});
+    console.log("Removed");
+    res.json({
+        success: true,
+        name:req.body.name
+    })
+})
+
+// Creating API for getting all products
+app.get('/allproducts', async (req,res)=>{
+    let products = await Product.find({});
+    console.log("All Products Fetched")
+    res.send(products);
 })
 
 app.listen(port, (error)=>{

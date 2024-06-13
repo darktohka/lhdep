@@ -1,0 +1,261 @@
+import p1_img from "./torta1.jpg";
+import p2_img from "./torta2.jpg";
+import image5 from "./377152529_930356365104086_6086002111161094451_n.jpg";
+import t1 from "./t1.jpg";
+import t2 from "./t2.jpg";
+import t3 from "./t3.jpg";
+import t4 from "./t4.jpg";
+import t5 from "./t5.jpg"
+import t6 from "./t6.jpg"
+import t7 from "./t7.jpg"
+import t8 from "./t8.jpg"
+import t9 from "./t9.jpg"
+
+let all_product = [
+    {
+      id: 1,
+      name: "Tort cu etaj",
+      category: "oferta",
+      image: p1_img,
+      new_price: 350.0,
+      old_price: 400.0,
+    },
+    {
+        id: 2,
+        name: "Tort cu pisica",
+        category: "oferta",
+        image: p2_img,
+        new_price: 150.0,
+        old_price: 400.0,
+    },
+
+    {
+      id: 3,
+      name: "Tort cu pisica",
+      category: "oferta",
+      image: t1,
+      new_price: 150.0,
+      old_price: 400.0,
+  },
+  {
+    id: 4,
+    name: "Tort cu pisica",
+    category: "oferta",
+    image: t2,
+    new_price: 150.0,
+    old_price: 400.0,
+  },
+  {
+    id: 5,
+    name: "Tort cu pisica",
+    category: "oferta",
+    image: t3,
+    new_price: 150.0,
+    old_price: 400.0,
+},
+{
+  id: 6,
+  name: "Tort cu pisica",
+  category: "oferta",
+  image: t4,
+  new_price: 150.0,
+  old_price: 400.0,
+},
+{
+id: 7,
+name: "Tort cu pisica",
+category: "oferta",
+image: t5,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+  id: 8,
+  name: "Tort cu pisica",
+  category: "oferta",
+  image: p2_img,
+  new_price: 150.0,
+  old_price: 400.0,
+},
+{
+id: 9,
+name: "Tort cu pisica",
+category: "oferta",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 10,
+name: "Tort cu pisica",
+category: "oferta",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+  id: 11,
+  name: "Tort cu pisica",
+  category: "oferta",
+  image: p2_img,
+  new_price: 150.0,
+  old_price: 400.0,
+},
+{
+id: 12,
+name: "Tort cu pisica",
+category: "oferta",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 13,
+name: "Tort cu pisica",
+category: "oferta",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+
+{
+  id: 14,
+  name: "Tort cu etaj",
+  category: "eveniment",
+  image: p1_img,
+  new_price: 350.0,
+  old_price: 400.0,
+},
+{
+    id: 15,
+    name: "Tort cu pisica",
+    category: "eveniment",
+    image: t6,
+    new_price: 150.0,
+    old_price: 400.0,
+},
+{
+  id: 16,
+  name: "Tort cu pisica",
+  category: "eveniment",
+  image: t7,
+  new_price: 150.0,
+  old_price: 400.0,
+},
+{
+id: 17,
+name: "Tort cu pisica",
+category: "eveniment",
+image: t8,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+    id: 18,
+    name: "Tort cu pisica",
+    category: "eveniment",
+    image: t9,
+    new_price: 150.0,
+    old_price: 400.0,
+},
+{
+  id: 19,
+  name: "Tort cu pisica",
+  category: "eveniment",
+  image: p2_img,
+  new_price: 150.0,
+  old_price: 400.0,
+},
+{
+id: 20,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 21,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 22,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 23,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 24,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 25,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 26,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 27,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 28,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+{
+id: 29,
+name: "Tort cu pisica",
+category: "eveniment",
+image: p2_img,
+new_price: 150.0,
+old_price: 400.0,
+},
+
+{   
+  id: 30,
+  name: "Tort Sapientia",
+  category: "eveniment",
+  image: image5,
+  new_price: 160.00,
+  old_price: 200.00,
+
+},
+];
+
+export default all_product;
