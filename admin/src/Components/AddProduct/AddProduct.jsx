@@ -3,19 +3,26 @@ import './AddProduct.css';
 import upload_area from '../../assets/upload_area.svg';
 
 const AddProduct = () => {
-    const [image, setImage] = useState(false);
+    const [images, setImages] = useState([]);
+    const [mainImageIndex, setMainImageIndex] = useState(0);
     const [productDetails, setProductDetails] = useState({
         name: "",
-        image: "",
         category: "Torturi",
         new_price: "",
-        old_price: ""
+        old_price: "",
+        description: "",
     });
 
-    const imageHandler = (e) => {
-        setImage(e.target.files[0]);
+    const descriptionHandler = (e) => {
+        setProductDetails({ ...productDetails, description: e.target.value });
     };
 
+    const imageHandler = (e) => {
+        setImages(Array.from(e.target.files));
+        setMainImageIndex(0); // Set the first image as the main image by default
+    };
+
+    
     const changeHandler = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
     };
@@ -24,10 +31,12 @@ const AddProduct = () => {
         try {
             console.log(productDetails);
             let responseData;
-            let product = productDetails;
+            let product = { ...productDetails };
 
             let formData = new FormData();
-            formData.append('product', image);
+            images.forEach(image => {
+                formData.append('product', image);
+            });
 
             const uploadResponse = await fetch('http://localhost:4000/upload', {
                 method: 'POST',
@@ -38,13 +47,13 @@ const AddProduct = () => {
             });
 
             if (!uploadResponse.ok) {
-                throw new Error('Failed to upload image');
+                throw new Error('Failed to upload images');
             }
 
             responseData = await uploadResponse.json();
 
             if (responseData.success) {
-                product.image = responseData.image_url;
+                product.images = responseData.image_urls;
                 console.log(product);
 
                 const addProductResponse = await fetch('http://localhost:4000/addproduct', {
@@ -79,6 +88,17 @@ const AddProduct = () => {
                 <p>Titlul Produsului</p>
                 <input value={productDetails.name} onChange={changeHandler} type="text" name='name' placeholder='Type here' />
             </div>
+            <div className="addproduct-itemfield">
+    <p>Descriere</p>
+    <textarea
+        value={productDetails.description}
+        onChange={descriptionHandler}
+        name="description"
+        rows="6"
+        placeholder="Introduceți descrierea produsului..."
+    />
+            </div>
+
             <div className="addproduct-price">
                 <div className="addproduct-itemfield">
                     <p>Pret vechi</p>
@@ -100,9 +120,20 @@ const AddProduct = () => {
             </div>
             <div className="addproduct-itemfield">
                 <label htmlFor="file-input">
-                    <img src={image ? URL.createObjectURL(image) : upload_area} className='addproduct-thumnail-img' alt="" />
+                    <img src={images.length ? URL.createObjectURL(images[mainImageIndex]) : upload_area} className='addproduct-thumnail-img' alt="" />
                 </label>
-                <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
+                <input onChange={imageHandler} type="file" name='images' id='file-input' multiple hidden />
+                <div className="image-previews">
+                    {images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={URL.createObjectURL(image)}
+                            alt={`preview ${index}`}
+                            className={`image-preview ${index === mainImageIndex ? 'selected' : ''}`}
+                            onClick={() => setMainImageIndex(index)}
+                        />
+                    ))}
+                </div>
             </div>
             <button onClick={Add_Product} className='addproduct-btn'>ADAUGA</button>
         </div>

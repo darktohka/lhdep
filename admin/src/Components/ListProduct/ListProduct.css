@@ -1,0 +1,168 @@
+.listproduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 740px;
+    padding: 10px 50px;
+    margin: 30px;
+    border-radius: 6px;
+    background: white;
+}
+
+.listproduct-search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.listproduct-format-main {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0px;
+    color: #454545;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.listproduct-allproducts {
+    width: 100%;
+}
+
+.listproduct-format {
+    align-items: center;
+}
+
+.listproduct-product-icon {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.listproduct-remove-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+}
+
+.listproduct-format {
+    align-items: center;
+    font-weight: 500;
+}
+
+.listproduct-product-icon {
+    height: 80px;
+}
+
+.listproduct-remove-icon {
+    cursor: pointer;
+    margin: auto;
+}
+
+.listproduct-allproducts {
+    overflow: auto;
+}
+
+.listproduct-edit-mode {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.listproduct-edit-mode input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.listproduct-edit-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.listproduct-edit-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.listproduct-edit-actions button:hover {
+    opacity: 0.8;
+}
+
+.listproduct-edit-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.listproduct-edit-button:hover {
+    background-color: #0056b3;
+}
+
+.listproduct-remove-button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.listproduct-remove-button:hover {
+    background-color: #c82333;
+}
+
+.listproduct-action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+}
+
+@media(max-width: 800px) {
+    .listproduct {
+        box-sizing: border-box;
+        width: 95%;
+        height: 100%;
+        padding: 10px 30px;
+        margin: 20px auto;
+    }
+    .listproduct-format {
+        padding: 15px 0px;
+        color: #454545;
+        font-size: 12px;
+    }
+    .listproduct-product-icon {
+        height: 60px;        
+    }
+    .listproduct-edit-mode {
+        grid-template-columns: 1fr;
+    }
+    .listproduct-edit-actions {
+        flex-direction: column;
+    }
+}
