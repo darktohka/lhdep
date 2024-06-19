@@ -6,6 +6,8 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+
 
 
 app.use(express.json());
@@ -53,6 +55,53 @@ app.post("/upload", upload.array('product', 5), (req, res) => {
         res.status(500).json({ success: 0, error: 'Internal server error' });
     }
 });
+const Order = mongoose.model("Order", {
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Users",
+        required: true,
+    },
+    cartItems: {
+        type: Object,
+        required: true,
+    },
+    totalAmount: {
+        type: Number,
+        required: true,
+    },
+    deliveryOption: {
+        type: String, // "pickup" or "delivery"
+        required: true,
+    },
+    address: {
+        type: String, // only required if deliveryOption is "delivery"
+        required: function() {
+            return this.deliveryOption === "delivery";
+        },
+    },
+    phone: {
+        type: Number, // Add phone number field
+        required: true,
+    },
+    status: {
+        type: String,
+        default: "Pending",
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    scheduledDate: {  // Nou câmp pentru data programată
+        type: Date,
+        required: true,
+    },
+    scheduledTime: {  // Nou câmp pentru ora programată
+        type: String,
+        required: true,
+    }
+});
+
+
 
 
 const Product = mongoose.model("Product",{
@@ -275,6 +324,152 @@ app.post('/login',async (req,res) =>{
         });
     }
 })
+
+app.get('/oferte', async (req,res)=>{
+    let products = await Product.find({});
+    let oferte = products.slice(1).slice(-4);
+    console.log("Oferte Fetched");
+    res.send(oferte);
+})
+
+app.get('/recomandari', async (req,res)=>{
+    let products = await Product.find({});
+    let recomandari = products.slice(0,5);
+    console.log("Recomandari Fetched");
+    res.send(recomandari);
+})
+
+//fetch user
+    const fetchUser = async (req,res,next)=>{
+        const token = req.header('auth-token');
+        if(!token){
+            res.status(401).send({errors:"Please authenticate using valid token"})
+        }
+        else{
+            try{
+                const data = jwt.verify(token,'secret_ecom');
+                req.user = data.user;
+                next();
+            } catch(error){
+                res.status(401).send({errors:"please authenticate using a valid token"})
+            }
+        }
+    }
+
+//endpoint for cartdata
+app.post('/addtocart',fetchUser, async (req,res)=>{
+    console.log("added", req.body.itemId)
+    let userData = await Users.findOne({_id:req.user.id});
+    userData.cartData[req.body.itemId] += 1;
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.send("Added!")
+   // res.json({ success: true, message: 'Item added to cart' }); // Send a success response
+
+})
+
+//endpoint remove product from cartdata
+app.post('/removefromcart', fetchUser, async (req,res)=>{
+    console.log("removed", req.body.itemId)
+    let userData = await Users.findOne({_id:req.user.id});
+    if(userData.cartData[req.body.itemId]>0)
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.json({ success: true, message: 'Item removed from cart' }); // Send a success response
+
+})
+
+//get cartdata
+app.post('/getcart', fetchUser,async(req,res)=>{
+    console.log("GetCart");
+    let userData = await Users.findOne({_id:req.user.id})
+    res.json(userData.cartData);
+})
+
+app.post('/createorder', fetchUser, async (req, res) => {
+    const { cartItems, totalAmount, deliveryOption, address, deliveryDateTime } = req.body;
+  
+    if (!deliveryDateTime || !deliveryDateTime.date || !deliveryDateTime.time) {
+      return res.status(400).json({ success: false, error: 'Scheduled date and time are required' });
+    }
+  
+    const { date, time } = deliveryDateTime;
+  
+    // Proceed to create the order using date and time
+    const newOrder = new Order({
+      userId: req.user.id,
+      cartItems,
+      totalAmount,
+      deliveryOption,
+      address: deliveryOption === 'delivery' ? address : null,
+      scheduledDate: date,
+      scheduledTime: time,
+      phone: req.body.phone,
+    });
+  
+    await newOrder.save();
+  
+    res.json({ success: true, message: 'Order created successfully', order: newOrder });
+  });
+  
+  
+
+// Exemplu de modificare a rutei pentru preluarea comenzilor
+app.get('/admin/orders', async (req, res) => {
+    try {
+        const orders = await Order.find({})
+            .select('userId cartItems totalAmount deliveryOption address phone status date scheduledDate scheduledTime') // Selectează doar câmpurile necesare
+            .populate('userId', 'name email phone'); // Populează cu detalii despre utilizator (name, email, phone)
+        res.json(orders);
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        res.status(500).json({ success: false, error: 'Failed to fetch orders' });
+    }
+});
+
+app.patch("/admin/orders/:orderId/finalize", async (req, res) => {
+    try {
+      const { orderId } = req.params;
+      const { status } = req.body;
+  
+      const updatedOrder = await Order.findByIdAndUpdate(orderId, { status }, { new: true });
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ success: false, error: "Order not found" });
+      }
+  
+      res.json({ success: true, updatedOrder });
+    } catch (error) {
+      console.error("Error finalizing order:", error);
+      res.status(500).json({ success: false, error: "Failed to finalize order" });
+    }
+  });
+  
+
+// Backend: Adăugare rută pentru ștergere comenzi
+app.delete('/admin/orders/:orderId', async (req, res) => {
+    try {
+        const { orderId } = req.params;
+
+        // Verificăm dacă comanda există
+        const order = await Order.findById(orderId);
+        if (!order) {
+            return res.status(404).json({ success: false, error: 'Order not found' });
+        }
+
+        // Verificăm dacă comanda este deja finalizată
+        if (order.status === 'Completed') {
+            return res.status(400).json({ success: false, error: 'Cannot delete a completed order' });
+        }
+
+        // Ștergem comanda din baza de date
+        await Order.findByIdAndDelete(orderId);
+
+        res.json({ success: true, message: 'Order deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting order:', error);
+        res.status(500).json({ success: false, error: 'Failed to delete order' });
+    }
+});
+
 
 
 app.listen(port, (error) => {
