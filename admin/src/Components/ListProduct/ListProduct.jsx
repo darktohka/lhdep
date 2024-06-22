@@ -6,6 +6,7 @@ const ListProduct = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [editProduct, setEditProduct] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const [searchByIdTerm, setSearchByIdTerm] = useState("");
 
     const fetchProducts = async () => {
         try {
@@ -86,6 +87,14 @@ const ListProduct = () => {
         setFilteredProducts(filtered);
     };
 
+    const handleSearchByIdChange = (e) => {
+        setSearchByIdTerm(e.target.value);
+    };
+
+    const filteredById = filteredProducts.filter(product =>
+        product.id.toString().includes(searchByIdTerm.toLowerCase())
+    );
+
     return (
         <div className='listproduct'>
             <h1>Lista Produselor</h1>
@@ -96,7 +105,15 @@ const ListProduct = () => {
                 onChange={handleSearchChange}
                 className="listproduct-search"
             />
+            <input
+                type="text"
+                placeholder="Căutare după ID..."
+                value={searchByIdTerm}
+                onChange={handleSearchByIdChange}
+                className="listproduct-search"
+            />
             <div className="listproduct-format-main">
+                <p>Id</p>
                 <p>Produse</p>
                 <p>Titlu</p>
                 <p>Pret vechi</p>
@@ -105,33 +122,33 @@ const ListProduct = () => {
                 <p>Acțiuni</p>
             </div>
             <div className="listproduct-allproducts">
-                {filteredProducts.map((product) => (
-                    <div key={product.id} className="listproduct-format-main listproduct-format">
+                {filteredById.map((product) => (
+                    <div key={product.id} className="listproduct-format">
+                        <p>{product.id}</p>
                         <img src={product.images[0]} alt="" className="listproduct-product-icon" />
-                        
-                        {editProduct && editProduct.id === product.id ? (
-                            <div className="listproduct-edit-mode">
-                                <input type="text" name="name" value={editProduct.name} onChange={handleInputChange} />
-                                <input type="text" name="old_price" value={editProduct.old_price} onChange={handleInputChange} />
-                                <input type="text" name="new_price" value={editProduct.new_price} onChange={handleInputChange} />
-                                <input type="text" name="category" value={editProduct.category} onChange={handleInputChange} />
-                                <div className="listproduct-edit-actions">
-                                    <button onClick={saveChanges}>Salvează</button>
-                                    <button onClick={cancelEditing}>Anulează</button>
+                        <p>{product.name}</p>
+                        <p>{product.old_price} lei</p>
+                        <p>{product.new_price} lei</p>
+                        <p>{product.category}</p>
+                        <div className="listproduct-action-buttons">
+                            {editProduct && editProduct.id === product.id ? (
+                                <div className="listproduct-edit-mode">
+                                    <input type="text" name="name" value={editProduct.name} onChange={handleInputChange} />
+                                    <input type="text" name="old_price" value={editProduct.old_price} onChange={handleInputChange} />
+                                    <input type="text" name="new_price" value={editProduct.new_price} onChange={handleInputChange} />
+                                    <input type="text" name="category" value={editProduct.category} onChange={handleInputChange} />
+                                    <div className="listproduct-edit-actions">
+                                        <button onClick={saveChanges}>Salvează</button>
+                                        <button onClick={cancelEditing}>Anulează</button>
+                                    </div>
                                 </div>
-                            </div>
-                        ) : (
-                            <>
-                                <p>{product.name}</p>
-                                <p>{product.old_price} lei</p>
-                                <p>{product.new_price} lei</p>
-                                <p>{product.category}</p>
-                                <div className="listproduct-action-buttons">
+                            ) : (
+                                <>
                                     <button className="listproduct-edit-button" onClick={() => startEditing(product)}>Editează</button>
                                     <button className="listproduct-remove-button" onClick={() => removeProduct(product.id)}>Șterge</button>
-                                </div>
-                            </>
-                        )}
+                                </>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>

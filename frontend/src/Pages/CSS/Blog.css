@@ -1,0 +1,104 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #a5d8e8;
+}
+
+.header h1 {
+  color: #a5d8e8;
+  font-size: 2.5em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.content {
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 40%;
+  height: auto;
+}
+
+.card .small-image {
+  padding: 10px;
+}
+
+.card .left {
+  order: 1;
+}
+
+.card .right {
+  order: 2;
+}
+
+.card .text {
+  padding: 20px;
+  width: 60%;
+}
+
+.card p {
+  margin: 15px 0;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.card p:first-of-type {
+  font-weight: bold;
+  color: #555;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #a5d8e8;
+}
+
+/* Media queries pentru tablete si telefoane */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card .text {
+    width: 100%;
+    padding: 20px;
+  }
+}

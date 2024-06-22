@@ -38,9 +38,20 @@
 }
 
 .finalize-btn {
-  background-color: #4caf50;
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #4caf50; /* culoare verde pentru butonul de finalizare */
   color: white;
 }
+
+.finalize-btn.completed {
+  background-color: #ccc; /* culoare gri pentru butonul finalizat */
+  cursor: not-allowed; /* cursorul devine "not-allowed" când comanda este finalizată */
+}
+
 
 .delete-btn {
   background-color: #f44336;

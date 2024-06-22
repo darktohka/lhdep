@@ -1,0 +1,93 @@
+.delivery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 150px;
+  }
+  
+  .delivery-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .delivery-left h1 {
+    color: rgb(160, 212, 255);
+    font-size: 50px;
+    font-weight: 400;
+  }
+  
+  .delivery-left p {
+    color: rgb(129, 188, 225);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  .buy-now-button {
+    width: 282px;
+    height: 70px;
+    border-radius: 35px;
+    background: rgb(109, 202, 255);
+    border: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .buy-now-button:hover {
+    background: rgb(89, 172, 225);
+  }
+  
+  .delivery-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .delivery-right img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Media queries pentru tablete */
+  @media (max-width: 1024px) {
+    .delivery-left h1 {
+      font-size: 40px;
+    }
+  
+    .delivery-left p {
+      font-size: 18px;
+    }
+  
+    .buy-now-button {
+      width: 240px;
+      height: 60px;
+      font-size: 18px;
+    }
+  }
+  
+  /* Media queries pentru telefoane */
+  @media (max-width: 768px) {
+    .delivery-left h1 {
+      font-size: 30px;
+    }
+  
+    .delivery-left p {
+      font-size: 16px;
+    }
+  
+    .buy-now-button {
+      width: 200px;
+      height: 50px;
+      font-size: 16px;
+    }
+  }
+  

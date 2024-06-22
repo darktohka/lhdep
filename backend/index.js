@@ -275,7 +275,7 @@ app.post('/signup', async (req,res)=>{
         
     }
     let cart = {};
-    for (let i =0; i < 300; i++){
+    for (let i =0; i < 500; i++){
         cart[i]=0;
     }
     const user = new Users({
@@ -407,7 +407,7 @@ app.post('/createorder', fetchUser, async (req, res) => {
   
     await newOrder.save();
   
-    res.json({ success: true, message: 'Order created successfully', order: newOrder });
+    res.json({ success: true, message: 'Comanda a fost plasată cu succes', order: newOrder });
   });
   
   
@@ -443,27 +443,17 @@ app.patch("/admin/orders/:orderId/finalize", async (req, res) => {
     }
   });
   
-
-// Backend: Adăugare rută pentru ștergere comenzi
-app.delete('/admin/orders/:orderId', async (req, res) => {
+    app.post('/admin/orders/:orderId/removeorder', async (req, res) => {
     try {
         const { orderId } = req.params;
 
-        // Verificăm dacă comanda există
-        const order = await Order.findById(orderId);
-        if (!order) {
+        const deletedOrder = await Order.findByIdAndDelete(orderId);
+
+        if (!deletedOrder) {
             return res.status(404).json({ success: false, error: 'Order not found' });
         }
 
-        // Verificăm dacă comanda este deja finalizată
-        if (order.status === 'Completed') {
-            return res.status(400).json({ success: false, error: 'Cannot delete a completed order' });
-        }
-
-        // Ștergem comanda din baza de date
-        await Order.findByIdAndDelete(orderId);
-
-        res.json({ success: true, message: 'Order deleted successfully' });
+        res.json({ success: true, deletedOrder });
     } catch (error) {
         console.error('Error deleting order:', error);
         res.status(500).json({ success: false, error: 'Failed to delete order' });

@@ -1,0 +1,146 @@
+.torturi-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #f0f7fd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-sort-container input[type="text"],
+.search-sort-container select {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.search-sort-container input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.search-sort-container select {
+  width: 150px;
+}
+
+.torturi-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.torturi-product-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.torturi-product {
+  width: calc(25% - 10px);
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.torturi-product:hover {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.torturi-product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.torturi-product-info {
+  padding: 10px;
+}
+
+.price-old {
+  color: red;
+  text-decoration: line-through;
+}
+
+.price-new {
+  color: green;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.homecategory-loadmore {
+  cursor: pointer;
+  background-color: #28a745;
+  color: #fff;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.homecategory-less {
+  cursor: pointer;
+  background-color: #dc3545;
+  color: #fff;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.homecategory-loadmore:hover,
+.homecategory-less:hover {
+  filter: brightness(90%);
+}
+
+/* Media queries pentru tablete si telefoane */
+@media (max-width: 1024px) {
+  .torturi-product {
+    width: calc(33.33% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .torturi-product {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .torturi-product {
+    width: 100%;
+  }
+
+  .search-sort-container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .search-sort-container input[type="text"] {
+    margin-bottom: 10px;
+  }
+
+  .search-sort-container select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

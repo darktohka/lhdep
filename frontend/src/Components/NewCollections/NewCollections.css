@@ -1,0 +1,71 @@
+.newCollections {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.newCollections h1 {
+  font-size: 32px;
+  color: #333;
+}
+
+.newCollections hr {
+  width: 50%;
+  margin: 20px auto;
+  border-color: #ccc;
+}
+
+.collections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.collections .item {
+  width: 250px;
+  margin: 20px;
+  text-align: center;
+}
+
+.collections .item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.collections .item h2 {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.collections .item .new-price {
+  color: green;
+  font-weight: bold;
+}
+
+.collections .item .old-price {
+  text-decoration: line-through;
+  color: red;
+  margin-top: 5px;
+}
+
+/* Media queries pentru tablete */
+@media (max-width: 1024px) {
+  .newCollections h1 {
+    font-size: 28px;
+  }
+
+  .collections .item {
+    width: 45%;
+  }
+}
+
+/* Media queries pentru telefoane */
+@media (max-width: 768px) {
+  .newCollections h1 {
+    font-size: 24px;
+  }
+
+  .collections .item {
+    width: 90%;
+  }
+}
