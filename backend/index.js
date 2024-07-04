@@ -13,7 +13,7 @@ const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/ecomme
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(MONGODB_URL)
+mongoose.connect(MONGODB_URL, { authSource: 'admin' })
     .then(() => {
         console.log("Connected to MongoDB");
     })
