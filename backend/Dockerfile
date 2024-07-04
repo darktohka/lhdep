@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /srvackage
+WORKDIR /srv
 COPY . /srv/
 RUN npm install
 
