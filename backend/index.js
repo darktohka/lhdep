@@ -6,14 +6,14 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
 
-
+const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/ecommerce';
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://bartisandrea:kReEFRvlE9RwehxV@cluster0.lclv73w.mongodb.net/e-commerce")
+mongoose.connect(MONGODB_URL)
     .then(() => {
         console.log("Connected to MongoDB");
     })
@@ -44,8 +44,8 @@ app.post("/upload", upload.array('product', 5), (req, res) => {
             return res.status(400).json({ success: 0, error: 'No files uploaded' });
         }
 
-        const image_urls = req.files.map(file => `http://localhost:${port}/images/${file.filename}`);
-        
+        const image_urls = req.files.map(file => `${BASE_URL}/images/${file.filename}`);
+
         res.json({
             success: 1,
             image_urls: image_urls
@@ -114,8 +114,8 @@ const Product = mongoose.model("Product",{
         required: true,
     },
     description: {
-        type: String, 
-        required: false, 
+        type: String,
+        required: false,
     },
     images:{
         type: [String],
@@ -243,7 +243,7 @@ app.post('/updateproduct', async (req, res) => {
     }
 });
 
-//user model 
+//user model
 const Users = mongoose.model('Users', {
     name:{
         type: String,
@@ -272,7 +272,7 @@ app.post('/signup', async (req,res)=>{
     let check = await Users.findOne({email:req.body.email});
     if (check) {
         return res.status(400).json({success:false,errors:"existing user found with same email"})
-        
+
     }
     let cart = {};
     for (let i =0; i < 500; i++){
@@ -386,13 +386,13 @@ app.post('/getcart', fetchUser,async(req,res)=>{
 
 app.post('/createorder', fetchUser, async (req, res) => {
     const { cartItems, totalAmount, deliveryOption, address, deliveryDateTime } = req.body;
-  
+
     if (!deliveryDateTime || !deliveryDateTime.date || !deliveryDateTime.time) {
       return res.status(400).json({ success: false, error: 'Scheduled date and time are required' });
     }
-  
+
     const { date, time } = deliveryDateTime;
-  
+
     // Proceed to create the order using date and time
     const newOrder = new Order({
       userId: req.user.id,
@@ -404,13 +404,13 @@ app.post('/createorder', fetchUser, async (req, res) => {
       scheduledTime: time,
       phone: req.body.phone,
     });
-  
+
     await newOrder.save();
-  
+
     res.json({ success: true, message: 'Comanda a fost plasată cu succes', order: newOrder });
   });
-  
-  
+
+
 
 // Exemplu de modificare a rutei pentru preluarea comenzilor
 app.get('/admin/orders', async (req, res) => {
@@ -429,20 +429,20 @@ app.patch("/admin/orders/:orderId/finalize", async (req, res) => {
     try {
       const { orderId } = req.params;
       const { status } = req.body;
-  
+
       const updatedOrder = await Order.findByIdAndUpdate(orderId, { status }, { new: true });
-  
+
       if (!updatedOrder) {
         return res.status(404).json({ success: false, error: "Order not found" });
       }
-  
+
       res.json({ success: true, updatedOrder });
     } catch (error) {
       console.error("Error finalizing order:", error);
       res.status(500).json({ success: false, error: "Failed to finalize order" });
     }
   });
-  
+
     app.post('/admin/orders/:orderId/removeorder', async (req, res) => {
     try {
         const { orderId } = req.params;
