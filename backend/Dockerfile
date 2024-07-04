@@ -1,7 +1,7 @@
 FROM node:20-alpine
 
+WORKDIR /srv
 COPY . /srv/
 RUN npm install
 
-WORKDIR /srv
 ENTRYPOINT ["npm", "run", "start"]
