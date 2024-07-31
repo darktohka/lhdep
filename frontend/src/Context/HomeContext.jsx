@@ -16,7 +16,7 @@ const HomeContextProvider = (props) => {
   const [deliveryFee, setDeliveryFee] = useState(20);
 
   useEffect(() => {
-    fetch('http://localhost:4000/allproducts')
+    fetch('https://api.littleheaven.me/allproducts')
       .then((response) => response.json())
       .then((data) => {
         setAll_Products(data);
@@ -25,7 +25,7 @@ const HomeContextProvider = (props) => {
       .catch((error) => console.error('Error fetching all products:', error));
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/getcart', {
+      fetch('https://api.littleheaven.me/getcart', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -42,7 +42,7 @@ const HomeContextProvider = (props) => {
   const addToCart = (itemId, quantity = 1) => {
     setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + quantity }));
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/addtocart', {
+      fetch('https://api.littleheaven.me/addtocart', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -60,7 +60,7 @@ const HomeContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: Math.max(0, prev[itemId] - 1) }));
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/removefromcart', {
+      fetch('https://api.littleheaven.me/removefromcart', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -102,7 +102,7 @@ const HomeContextProvider = (props) => {
 
   const createOrder = async (orderData) => {
     try {
-      const response = await fetch('http://localhost:4000/createorder', {
+      const response = await fetch('https://api.littleheaven.me/createorder', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

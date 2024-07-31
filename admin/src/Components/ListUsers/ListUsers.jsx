@@ -12,7 +12,7 @@ const ListUsers = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:4000/allusers');
+            const response = await fetch('https://api.littleheaven.me/allusers');
             if (!response.ok) {
                 throw new Error('Failed to fetch users');
             }

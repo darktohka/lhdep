@@ -10,7 +10,7 @@ const ListProduct = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:4000/allproducts');
+            const response = await fetch('https://api.littleheaven.me/allproducts');
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
             }
@@ -28,7 +28,7 @@ const ListProduct = () => {
 
     const removeProduct = async (id) => {
         try {
-            const response = await fetch('http://localhost:4000/removeproduct', {
+            const response = await fetch('https://api.littleheaven.me/removeproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const ListProduct = () => {
 
     const saveChanges = async () => {
         try {
-            const response = await fetch('http://localhost:4000/updateproduct', {
+            const response = await fetch('https://api.littleheaven.me/updateproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

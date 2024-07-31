@@ -5,11 +5,11 @@ let listproduct = [
       "name": "Tort1",
       "description": "Acesta este un test pentru tortul1",
       "images": [
-        "http://localhost:4000/images/product_1718532044242.jpg",
-        "http://localhost:4000/images/product_1718532044247.jpg",
-        "http://localhost:4000/images/product_1718532044251.jpg",
-        "http://localhost:4000/images/product_1718532044254.jpg",
-        "http://localhost:4000/images/product_1718532044258.jpg"
+        "https://api.littleheaven.me/images/product_1718532044242.jpg",
+        "https://api.littleheaven.me/images/product_1718532044247.jpg",
+        "https://api.littleheaven.me/images/product_1718532044251.jpg",
+        "https://api.littleheaven.me/images/product_1718532044254.jpg",
+        "https://api.littleheaven.me/images/product_1718532044258.jpg"
       ],
       "category": "Torturi",
       "new_price": 125,
@@ -24,11 +24,11 @@ let listproduct = [
       "name": "Tort2",
       "description": "Acesta este un test pentru tortul2",
       "images": [
-        "http://localhost:4000/images/product_1718532097267.jpg",
-        "http://localhost:4000/images/product_1718532097272.jpg",
-        "http://localhost:4000/images/product_1718532097275.jpg",
-        "http://localhost:4000/images/product_1718532097278.jpg",
-        "http://localhost:4000/images/product_1718532097282.jpg"
+        "https://api.littleheaven.me/images/product_1718532097267.jpg",
+        "https://api.littleheaven.me/images/product_1718532097272.jpg",
+        "https://api.littleheaven.me/images/product_1718532097275.jpg",
+        "https://api.littleheaven.me/images/product_1718532097278.jpg",
+        "https://api.littleheaven.me/images/product_1718532097282.jpg"
       ],
       "category": "Torturi",
       "new_price": 200,
@@ -43,11 +43,11 @@ let listproduct = [
       "name": "Tort3",
       "description": "Acesta este un test pentru tortul3",
       "images": [
-        "http://localhost:4000/images/product_1718532130434.jpg",
-        "http://localhost:4000/images/product_1718532130437.jpg",
-        "http://localhost:4000/images/product_1718532130440.jpg",
-        "http://localhost:4000/images/product_1718532130443.jpg",
-        "http://localhost:4000/images/product_1718532130446.jpg"
+        "https://api.littleheaven.me/images/product_1718532130434.jpg",
+        "https://api.littleheaven.me/images/product_1718532130437.jpg",
+        "https://api.littleheaven.me/images/product_1718532130440.jpg",
+        "https://api.littleheaven.me/images/product_1718532130443.jpg",
+        "https://api.littleheaven.me/images/product_1718532130446.jpg"
       ],
       "category": "Torturi",
       "new_price": 230,
@@ -62,11 +62,11 @@ let listproduct = [
       "name": "Macarons1",
       "description": "Acesta este un test pentru macarons1",
       "images": [
-        "http://localhost:4000/images/product_1718532170132.jpg",
-        "http://localhost:4000/images/product_1718532170135.jpg",
-        "http://localhost:4000/images/product_1718532170138.jpg",
-        "http://localhost:4000/images/product_1718532170141.jpg",
-        "http://localhost:4000/images/product_1718532170143.jpg"
+        "https://api.littleheaven.me/images/product_1718532170132.jpg",
+        "https://api.littleheaven.me/images/product_1718532170135.jpg",
+        "https://api.littleheaven.me/images/product_1718532170138.jpg",
+        "https://api.littleheaven.me/images/product_1718532170141.jpg",
+        "https://api.littleheaven.me/images/product_1718532170143.jpg"
       ],
       "category": "Macarons",
       "new_price": 80,
@@ -81,11 +81,11 @@ let listproduct = [
       "name": "Macarons2",
       "description": "Acesta este un test pentru macarons2",
       "images": [
-        "http://localhost:4000/images/product_1718532214349.jpg",
-        "http://localhost:4000/images/product_1718532214351.jpg",
-        "http://localhost:4000/images/product_1718532214353.jpg",
-        "http://localhost:4000/images/product_1718532214356.jpg",
-        "http://localhost:4000/images/product_1718532214358.jpg"
+        "https://api.littleheaven.me/images/product_1718532214349.jpg",
+        "https://api.littleheaven.me/images/product_1718532214351.jpg",
+        "https://api.littleheaven.me/images/product_1718532214353.jpg",
+        "https://api.littleheaven.me/images/product_1718532214356.jpg",
+        "https://api.littleheaven.me/images/product_1718532214358.jpg"
       ],
       "category": "Macarons",
       "new_price": 23,
@@ -100,11 +100,11 @@ let listproduct = [
       "name": "Macarons3",
       "description": "Acesta este un test pentru macarons3",
       "images": [
-        "http://localhost:4000/images/product_1718532257201.jpg",
-        "http://localhost:4000/images/product_1718532257204.jpg",
-        "http://localhost:4000/images/product_1718532257208.jpg",
-        "http://localhost:4000/images/product_1718532257212.jpg",
-        "http://localhost:4000/images/product_1718532257216.jpg"
+        "https://api.littleheaven.me/images/product_1718532257201.jpg",
+        "https://api.littleheaven.me/images/product_1718532257204.jpg",
+        "https://api.littleheaven.me/images/product_1718532257208.jpg",
+        "https://api.littleheaven.me/images/product_1718532257212.jpg",
+        "https://api.littleheaven.me/images/product_1718532257216.jpg"
       ],
       "category": "Macarons",
       "new_price": 230,
@@ -119,11 +119,11 @@ let listproduct = [
       "name": "Cheesecake1",
       "description": "Acesta este un test pentru Cheesecake1",
       "images": [
-        "http://localhost:4000/images/product_1718532287027.jpg",
-        "http://localhost:4000/images/product_1718532287030.jpg",
-        "http://localhost:4000/images/product_1718532287033.jpg",
-        "http://localhost:4000/images/product_1718532287035.jpg",
-        "http://localhost:4000/images/product_1718532287039.jpg"
+        "https://api.littleheaven.me/images/product_1718532287027.jpg",
+        "https://api.littleheaven.me/images/product_1718532287030.jpg",
+        "https://api.littleheaven.me/images/product_1718532287033.jpg",
+        "https://api.littleheaven.me/images/product_1718532287035.jpg",
+        "https://api.littleheaven.me/images/product_1718532287039.jpg"
       ],
       "category": "Cheesecake",
       "new_price": 200,
@@ -138,11 +138,11 @@ let listproduct = [
       "name": "Cheesecake2",
       "description": "Acesta este un test pentru Cheesecake2",
       "images": [
-        "http://localhost:4000/images/product_1718532326761.jpg",
-        "http://localhost:4000/images/product_1718532326763.jpg",
-        "http://localhost:4000/images/product_1718532326765.jpg",
-        "http://localhost:4000/images/product_1718532326768.jpg",
-        "http://localhost:4000/images/product_1718532326771.jpg"
+        "https://api.littleheaven.me/images/product_1718532326761.jpg",
+        "https://api.littleheaven.me/images/product_1718532326763.jpg",
+        "https://api.littleheaven.me/images/product_1718532326765.jpg",
+        "https://api.littleheaven.me/images/product_1718532326768.jpg",
+        "https://api.littleheaven.me/images/product_1718532326771.jpg"
       ],
       "category": "Cheesecake",
       "new_price": 23,
@@ -157,11 +157,11 @@ let listproduct = [
       "name": "Cheesecake3",
       "description": "Acesta este un test pentru Cheesecake3",
       "images": [
-        "http://localhost:4000/images/product_1718532351191.jpg",
-        "http://localhost:4000/images/product_1718532351193.jpg",
-        "http://localhost:4000/images/product_1718532351195.jpg",
-        "http://localhost:4000/images/product_1718532351197.jpg",
-        "http://localhost:4000/images/product_1718532351200.jpg"
+        "https://api.littleheaven.me/images/product_1718532351191.jpg",
+        "https://api.littleheaven.me/images/product_1718532351193.jpg",
+        "https://api.littleheaven.me/images/product_1718532351195.jpg",
+        "https://api.littleheaven.me/images/product_1718532351197.jpg",
+        "https://api.littleheaven.me/images/product_1718532351200.jpg"
       ],
       "category": "Cheesecake",
       "new_price": 230,
@@ -176,11 +176,11 @@ let listproduct = [
       "name": "Prajituri1",
       "description": "Acesta este un test pentru Prajituri1",
       "images": [
-        "http://localhost:4000/images/product_1718532491582.jpg",
-        "http://localhost:4000/images/product_1718532491585.jpg",
-        "http://localhost:4000/images/product_1718532491589.jpg",
-        "http://localhost:4000/images/product_1718532491595.jpg",
-        "http://localhost:4000/images/product_1718532491600.jpg"
+        "https://api.littleheaven.me/images/product_1718532491582.jpg",
+        "https://api.littleheaven.me/images/product_1718532491585.jpg",
+        "https://api.littleheaven.me/images/product_1718532491589.jpg",
+        "https://api.littleheaven.me/images/product_1718532491595.jpg",
+        "https://api.littleheaven.me/images/product_1718532491600.jpg"
       ],
       "category": "Prajituri",
       "new_price": 23,
@@ -195,11 +195,11 @@ let listproduct = [
       "name": "Prajituri2",
       "description": "Acesta este un test pentru Prajituri2",
       "images": [
-        "http://localhost:4000/images/product_1718532515332.jpg",
-        "http://localhost:4000/images/product_1718532515336.jpg",
-        "http://localhost:4000/images/product_1718532515340.jpg",
-        "http://localhost:4000/images/product_1718532515345.jpg",
-        "http://localhost:4000/images/product_1718532515350.jpg"
+        "https://api.littleheaven.me/images/product_1718532515332.jpg",
+        "https://api.littleheaven.me/images/product_1718532515336.jpg",
+        "https://api.littleheaven.me/images/product_1718532515340.jpg",
+        "https://api.littleheaven.me/images/product_1718532515345.jpg",
+        "https://api.littleheaven.me/images/product_1718532515350.jpg"
       ],
       "category": "Prajituri",
       "new_price": 23,
@@ -214,11 +214,11 @@ let listproduct = [
       "name": "Prajituri3",
       "description": "Acesta este un test pentru Prajituri3",
       "images": [
-        "http://localhost:4000/images/product_1718532538877.jpg",
-        "http://localhost:4000/images/product_1718532538882.jpg",
-        "http://localhost:4000/images/product_1718532538887.jpg",
-        "http://localhost:4000/images/product_1718532538892.jpg",
-        "http://localhost:4000/images/product_1718532538898.jpg"
+        "https://api.littleheaven.me/images/product_1718532538877.jpg",
+        "https://api.littleheaven.me/images/product_1718532538882.jpg",
+        "https://api.littleheaven.me/images/product_1718532538887.jpg",
+        "https://api.littleheaven.me/images/product_1718532538892.jpg",
+        "https://api.littleheaven.me/images/product_1718532538898.jpg"
       ],
       "category": "Prajituri",
       "new_price": 200,

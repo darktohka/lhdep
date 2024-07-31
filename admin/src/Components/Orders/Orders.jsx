@@ -11,7 +11,7 @@ const Orders = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:4000/admin/orders');
+            const response = await fetch('https://api.littleheaven.me/admin/orders');
             if (response.ok) {
                 const data = await response.json();
                 setOrders(data);
@@ -25,7 +25,7 @@ const Orders = () => {
 
     const finalizeOrder = async (orderId) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/orders/${orderId}/finalize`, {
+            const response = await fetch(`https://api.littleheaven.me/admin/orders/${orderId}/finalize`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Orders = () => {
 
     const deleteOrder = async (orderId) => {
         try {
-            const response = await fetch(`http://localhost:4000/admin/orders/${orderId}/removeorder`, {
+            const response = await fetch(`https://api.littleheaven.me/admin/orders/${orderId}/removeorder`, {
                 method: 'POST', // Using POST method for removing order
                 headers: {
                     'Content-Type': 'application/json',

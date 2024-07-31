@@ -17,7 +17,7 @@ const LoginSignup = () => {
     const login = async () => {
         console.log("Funcția de Autentificare Executată", formData);
         let responseData;
-        await fetch('http://localhost:4000/login',{
+        await fetch('https://api.littleheaven.me/login',{
             method:'POST',
             headers:{
                 Accept:'application/form-data',
@@ -39,7 +39,7 @@ const LoginSignup = () => {
     const signup = async () => {
         console.log("Funcția de Înregistrare Executată", formData);
         let responseData;
-        await fetch('http://localhost:4000/signup',{
+        await fetch('https://api.littleheaven.me/signup',{
             method:'POST',
             headers:{
                 Accept:'application/form-data',
@@ -66,7 +66,7 @@ const LoginSignup = () => {
                     <input name='email' value={formData.email} onChange={changeHandler} type="email" placeholder='Adresa de email' />
                     <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Parola'  />
                 </div>
-                    <button onClick={()=>{state==="Autentificare"?login():signup()}}>Continua</button> 
+                    <button onClick={()=>{state==="Autentificare"?login():signup()}}>Continua</button>
                     {state==="Înregistrare"
                     ?<p className="loginsignup-login">Ai deja un cont? <span onClick={() => {setState("Autentificare")}}>Loghează-te aici</span></p>
                     :<p className="loginsignup-login">Crează-ți un cont? <span onClick={() => {setState("Înregistrare")}}>Click aici</span></p>

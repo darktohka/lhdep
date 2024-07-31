@@ -22,7 +22,7 @@ const AddProduct = () => {
         setMainImageIndex(0); // Set the first image as the main image by default
     };
 
-    
+
     const changeHandler = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
     };
@@ -38,7 +38,7 @@ const AddProduct = () => {
                 formData.append('product', image);
             });
 
-            const uploadResponse = await fetch('http://localhost:4000/upload', {
+            const uploadResponse = await fetch('https://api.littleheaven.me/upload', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -56,7 +56,7 @@ const AddProduct = () => {
                 product.images = responseData.image_urls;
                 console.log(product);
 
-                const addProductResponse = await fetch('http://localhost:4000/addproduct', {
+                const addProductResponse = await fetch('https://api.littleheaven.me/addproduct', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
